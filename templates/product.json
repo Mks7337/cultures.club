@@ -1,0 +1,256 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_dqYrwr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "highlights",
+            "icon": "check_mark",
+            "content": "<p>🔮 <strong>Our Artworks<br/></strong>Each artwork starts with a vibe. A feeling. A sample. A thought.  Then we let the machine dream.  What comes back is tuned, curated, and printed just for you – on high-quality paper, with gallery-level finish.<strong><br/><br/></strong>⭐️ <strong>Premium Print Quality<br/></strong>• Paper finish: Matte, smooth, non-glare<br/>• Paper weight: 200 gsm (0.26 mm thickness) <br/>• Sustainable: FSC-certified paper<strong><br/><br/></strong>🌱 <strong>Production and Shipping<br/></strong>Custom-made, handled with care. Every piece is produced for you, near you - no overproduction, no waste and shorter shipping distances<strong><br/><br/></strong>📦 <strong>Safety Packaging<br/></strong>We take extra care with packaging so your premium print arrives undamaged. That first unboxing moment matters to us, too.<br/><br/>👀 <strong>Please Note<br/></strong>The product images are for inspiration only.  Furniture, and props are not included – you’re getting the art, not the whole vibe. <br/>Our frames are sold as displayed in the last two images in the product image gallery. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_dxhTXh": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "frame and format guide",
+            "icon": "check_mark",
+            "content": "<p>💡 We offer a wide range of sizes to make sure your artwork fits any wall – especially for our unframed options.<br/>The original artwork was designed in a <strong>2:3 aspect ratio</strong>, so depending on the size you choose, <strong>some cropping may occur</strong>.<br/>For best results, we recommend formats like <strong>60x90 cm</strong> which stay true to the original composition.<br/><br/>💎 <strong>All our framed art prints</strong> come ready-to-hang. All framed options come with the same high quality matte, smooth, non-glare paper and are protected by shatterproof plexiglass. </p><p>⚡️ <strong>Metal Frames<br/></strong>Material: Sleek, durable aluminum<br/>Colors: Black<br/>Measurements: 20 mm thick × 10 mm wide<br/>Look & Feel: Modern, minimal, slightly industrial<br/><br/>🔥 <strong>Wooden Frames<br/></strong>Material: Responsibly sourced oak and ash wood<br/>Colors: Natural oak, white, and black – with visible wood grain<strong><br/></strong>Measurements: 20 mm thick x 20mm wide <br/>Look & Feel: Warm, timeless, premium finish</p>",
+            "page": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "square"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_WgUmxq": {
+          "type": "text",
+          "settings": {
+            "text": "Delivery within 5 business days",
+            "text_style": "uppercase"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "collapsible_tab_xxH3mn": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "transport & delivery",
+            "icon": "box",
+            "content": "<p>Each product is made to order, ensuring the highest quality and minimal waste. Once your order is produced, it is carefully packed and shipped directly to you.</p><p>Standard shipping times are approximately <strong>5 business days</strong>. Please note that production and shipping times may vary depending on your location and order volume.</p><p>You’ll receive a tracking link as soon as your order is on its way.<br/><br/>EU GPSR Compliance Information<br/>Manufacturer contact information<br/>Name: Gelato<br/>Email address: support [at] gelato.com<br/>Postal address: Dronning Eufemias gate 8, 0191 Oslo, Norway<br/>Age guidelines: For adults<br/>Warranty (consumer-sales only): 2 years</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "description",
+        "collapsible_tab_dqYrwr",
+        "collapsible_tab_dxhTXh",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "text_WgUmxq",
+        "buy_buttons",
+        "collapsible_tab_xxH3mn"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "image_with_text_HjKi7D": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_XDc4GF": {
+          "type": "heading",
+          "settings": {
+            "heading": "detail MATTERS",
+            "heading_size": "h1"
+          }
+        },
+        "text_WkMMgz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>High-res art prints that don’t lose edge, even XXL. Frames that feel good to the touch. Paper that’s smooth, matte, and built to last.<br/><br/>We don’t just print – we craft.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XDc4GF",
+        "text_WkMMgz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/2200x1496_Website_Product_details_mat.jpg",
+        "height": "adapt",
+        "desktop_image_width": "large",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_LNtinD": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_XrUPxz": {
+          "type": "column",
+          "settings": {
+            "title": "🖥️ internet CULTURE AND STYLE",
+            "text": "<p>Aesthetic chaos turned into curated calm. Inspired from endless feeds created to last on your walls. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_VcRYmH": {
+          "type": "column",
+          "settings": {
+            "title": "🧠 ai enhanced HUMAN CREATIVITY",
+            "text": "<p>We call our process future-forward creativity. We let AI expand what’s possible, not replace what’s real.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_YEdhDR": {
+          "type": "column",
+          "settings": {
+            "title": "🔊 VIBES that you can hear and see",
+            "text": "<p>From soothing lo-fi beats to visual energy you can hang on your wall – this is multisensory storytelling. Chill, curated, collectible.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_XrUPxz",
+        "column_VcRYmH",
+        "column_YEdhDR"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "THE CULTURE behind the club",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "About us",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_AYDi4w": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "MORE VIBES for your home",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_HjKi7D",
+    "multicolumn_LNtinD",
+    "featured_collection_AYDi4w",
+    "related-products"
+  ]
+}

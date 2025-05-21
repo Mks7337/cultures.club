@@ -1,0 +1,62 @@
+{% schema %}
+{
+  "name": "Culture Club Section",
+  "tag": "section",
+  "class": "culture-club-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Culture Club"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="culture-club">
+  <div class="page-width">
+    <h2 class="section-title">The culture behind the club</h2>
+    <div class="culture-cards">
+      <div class="culture-card">
+        <p class="emoji">🖥️</p>
+        <h3>Internet culture and style</h3>
+        <p>Aesthetic chaos turned into curated calm.<br>Inspired from endless feeds created to last on your walls.</p>
+      </div>
+      <div class="culture-card">
+        <p class="emoji">🧠</p>
+        <h3>AI enhanced human creativity</h3>
+        <p>We call our process future-forward creativity.<br>We let AI expand what’s possible, not replace what’s real.</p>
+      </div>
+      <div class="culture-card">
+        <p class="emoji">🎧</p>
+        <h3>Vibes that you can hear and see</h3>
+        <p>From soothing lo-fi beats to visual energy you can hang on your wall – this is multisensory storytelling. Chill, curated, collectible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .culture-club {
+    padding: 4rem 0;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  .culture-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .culture-card {
+    max-width: 300px;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+  }
+  .emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
