@@ -1,6 +1,10 @@
-# Lofi Culture Club
+# Lofi Culture Club (v1.1-dev)
 
 Shopify Theme für Lofi Culture Club. Dieses Repository enthält das Shopify-Theme für den Online-Shop.
+
+## Versionen
+- v1.0: Basis-Version (stabiles Sicherheitsnetz)
+- v1.1: Aktuelle Entwicklungsversion
 
 ## Entwicklung
 
