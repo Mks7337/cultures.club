@@ -1,0 +1,275 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-section page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="section-title" style="font-size: {{ section.settings.heading_size }}px;">{{ section.settings.title }}</h2>
+  {% endif %}
+  
+  {% if section.settings.description != blank %}
+    <div class="section-description">{{ section.settings.description }}</div>
+  {% endif %}
+  
+  <div class="faq-container">
+    {% for block in section.blocks %}
+      <div class="faq-item" {{ block.shopify_attributes }}>
+        <button class="faq-question">
+          <span class="question-text">{{ block.settings.question }}</span>
+          <span class="icon-container">
+            <span class="icon-plus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+            </span>
+            <span class="icon-minus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+            </span>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  @font-face {
+    font-family: 'SocialScience-Cultures';
+    src: url("{{ 'SocialScience-Cultures.otf' | asset_url }}") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  .faq-section {
+    margin: 60px auto;
+    font-family: var(--font-body-family);
+    font-weight: var(--font-body-weight);
+    font-style: var(--font-body-style);
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+  }
+  
+  .section-description {
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f6f7fd;
+    overflow: hidden;
+  }
+  
+  .faq-question {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 20px 25px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    font-family: 'SocialScience-Cultures', sans-serif;
+    transition: color 0.3s ease;
+  }
+  
+  .faq-question.active {
+    color: #6300FF;
+  }
+  
+  .faq-question:hover {
+    color: #6300FF;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #6300FF;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-question.active .icon-container {
+    background-color: transparent;
+    border: 1px solid #6300FF;
+  }
+  
+  .icon-plus, .icon-minus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .icon-minus {
+    display: none;
+  }
+  
+  .faq-question.active .icon-plus {
+    display: none;
+  }
+  
+  .faq-question.active .icon-minus {
+    display: flex;
+    color: #6300FF;
+  }
+  
+  .question-text {
+    flex: 1;
+    padding-right: 15px;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  
+  .faq-answer {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+  
+  .faq-answer-content {
+    padding: 0 25px 20px 25px;
+    color: #555;
+    line-height: 1.6;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const isActive = this.classList.contains('active');
+        
+        // Schließe alle anderen FAQs
+        faqQuestions.forEach(q => {
+          if (q !== question) {
+            q.classList.remove('active');
+            q.nextElementSibling.style.height = '0px';
+          }
+        });
+        
+        // Toggle aktuelles FAQ
+        if (isActive) {
+          this.classList.remove('active');
+          answer.style.height = '0px';
+        } else {
+          this.classList.add('active');
+          answer.style.height = answer.querySelector('.faq-answer-content').offsetHeight + 'px';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Überschrift",
+      "default": "Häufig gestellte Fragen"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Überschriftgröße",
+      "default": 32
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Beschreibung",
+      "default": "<p>Hier findest du Antworten auf häufig gestellte Fragen.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Frage",
+          "default": "Hier deine Frage eingeben"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Antwort",
+          "default": "<p>Hier die Antwort auf die Frage eingeben.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Wie kann ich eine Bestellung aufgeben?",
+            "answer": "<p>Du kannst ganz einfach Produkte zu deinem Warenkorb hinzufügen und dann den Checkout-Prozess durchlaufen.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Wie sind die Versandkosten?",
+            "answer": "<p>Die Versandkosten werden während des Checkout-Prozesses berechnet und angezeigt.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Wie lange dauert der Versand?",
+            "answer": "<p>In der Regel versenden wir innerhalb von 1-3 Werktagen. Die Lieferzeit hängt dann von deinem Standort ab.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
