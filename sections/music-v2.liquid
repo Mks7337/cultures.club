@@ -1,0 +1,473 @@
+{% comment %}
+  Eine Sektion mit einem YouTube-Video und Text.
+  Die Sektion ermöglicht das Hinzufügen von CTA-Schaltflächen.
+  Flexibles Layout: Video links/rechts und anpassbare Hintergrundfarbe.
+{% endcomment %}
+
+<div class="music-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}" style="background-color: {{ section.settings.background_color }};">
+  <div class="page-width">
+    <div class="music-container {% if section.settings.reverse_layout %}music-container--reversed{% endif %}">
+      <div class="music-video-wrapper">
+        <div class="music-video-box" id="videoContainer-{{ section.id }}">
+          {% if section.settings.video_url != blank %}
+            {% assign video_id = section.settings.video_url | split: "v=" | last | split: "&" | first %}
+            <iframe
+              id="youtubeVideo-{{ section.id }}"
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              title="{{ section.settings.video_title | escape }}"
+            ></iframe>
+          {% else %}
+            <div class="music-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="music-content">
+        {% if section.settings.title != blank %}
+          <h2 class="music-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        
+        {% if section.settings.subtitle != blank %}
+          <p class="music-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        
+        {% if section.settings.tagline != blank %}
+          <div class="music-tagline">{{ section.settings.tagline }}</div>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <div class="music-description">{{ section.settings.description }}</div>
+        {% endif %}
+        
+        <div class="music-buttons">
+          {% if section.settings.button_label != blank %}
+            <a href="{{ section.settings.button_link }}" class="button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}">
+              {{ section.settings.button_label | escape }}
+            </a>
+          {% endif %}
+          
+          {% if section.settings.button_label_2 != blank %}
+            <a href="{{ section.settings.button_link_2 }}" class="button{% if section.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+              {{ section.settings.button_label_2 | escape }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .music-section {
+    padding: 0;
+  }
+  
+  .music-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    min-height: 400px;
+    padding: 40px 0;
+    align-content: flex-start;
+  }
+  
+  .music-container--reversed {
+    flex-direction: row-reverse;
+  }
+  
+  .music-video-wrapper {
+    flex: 1.1;
+    position: relative;
+    min-height: 300px;
+    margin-right: 5px;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  .music-container--reversed .music-video-wrapper {
+    margin-right: 0;
+    margin-left: 5px;
+  }
+  
+  .music-container--reversed .music-content {
+    text-align: right;
+    align-items: flex-end;
+  }
+  
+  .music-container--reversed .music-description {
+    max-width: 90%;
+    margin-left: auto;
+  }
+  
+  .music-container--reversed .music-buttons {
+    justify-content: flex-end;
+  }
+  
+  .music-video-box {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 0;
+  }
+  
+  .music-video-box:hover,
+  .music-video-box.playing {
+    transform: translate(-6px, -6px);
+    box-shadow: 6px 6px 0 #6300FF;
+  }
+  
+  .music-container--reversed .music-video-box:hover,
+  .music-container--reversed .music-video-box.playing {
+    transform: translate(6px, -6px);
+    box-shadow: -6px 6px 0 #6300FF;
+  }
+  
+  .music-video-box iframe,
+  .music-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .music-placeholder {
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .music-content {
+    flex: 0.9;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: -14px;
+  }
+  
+  .music-title {
+    font-size: 60px;
+    margin: -2px 0 10px;
+    padding: 0;
+    font-weight: 900;
+    line-height: 0.9;
+    color: #000000;
+    font-family: sans-serif;
+    text-transform: uppercase;
+  }
+  
+  .music-subtitle {
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #505050;
+    margin-top: 4px;
+  }
+  
+  .music-tagline {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #505050;
+    line-height: 1.8;
+  }
+  
+  .music-description {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+    color: #505050;
+    max-width: 90%;
+  }
+  
+  .music-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .music-buttons .button {
+    min-width: 160px;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 30px;
+  }
+  
+  /* Mobile Styles mit Grid-Layout */
+  @media screen and (max-width: 749px) {
+    .music-section {
+      padding: 30px 0;
+    }
+    
+    .music-container,
+    .music-container--reversed {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "subtitle"
+        "video"
+        "tagline"
+        "description"
+        "buttons";
+      gap: 8px; /* Geringerer Grundabstand zwischen Elementen */
+      padding: 0;
+      min-height: auto;
+    }
+    
+    .music-title {
+      grid-area: title;
+      font-size: 42px;
+      text-align: left;
+      margin: 0;
+      padding-left: 20px; /* Einzug nach rechts */
+    }
+    
+    .music-subtitle {
+      grid-area: subtitle;
+      font-size: 12px;
+      text-align: left;
+      margin: 0 0 -8px 0;
+      padding-left: 20px; /* Einzug nach rechts */
+    }
+    
+    .music-video-wrapper {
+      grid-area: video;
+      width: 100%;
+      margin: 15px 0 -12px 0;
+      min-height: auto;
+    }
+    
+    .music-tagline {
+      grid-area: tagline;
+      text-align: left;
+      margin: 0;
+      padding-left: 20px; /* Einzug nach rechts */
+    }
+    
+    .music-description {
+      grid-area: description;
+      text-align: left;
+      max-width: 100%;
+      margin: 0 0 -6px 0;
+      padding-left: 20px; /* Einzug nach rechts */
+    }
+    
+    .music-buttons {
+      grid-area: buttons;
+      justify-content: flex-start;
+      margin: 10px 0 0;
+      padding-left: 20px; /* Einzug nach rechts */
+    }
+    
+    .music-video-wrapper,
+    .music-content {
+      width: 100%;
+    }
+    
+    .music-content {
+      display: contents; /* Verteilt die Kinder im Grid */
+    }
+    
+    /* Auch bei umgekehrtem Layout links ausrichten im mobilen Modus */
+    .music-container--reversed .music-content {
+      text-align: left;
+      align-items: flex-start;
+    }
+    
+    .music-container--reversed .music-buttons {
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Zusätzliches JavaScript für perfekte Ausrichtung auf Desktop
+    const videoWrapper = document.querySelector('.music-video-wrapper');
+    const title = document.querySelector('.music-title');
+    
+    if (window.innerWidth > 749 && videoWrapper && title) {
+      // Kompensiere eventuelle Browser-Rendering-Differenzen
+      const videoTop = videoWrapper.getBoundingClientRect().top;
+      const titleTop = title.getBoundingClientRect().top;
+      
+      if (titleTop > videoTop) {
+        title.style.marginTop = `-${titleTop - videoTop}px`;
+      }
+    }
+    
+    // YouTube API laden
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // Video-Container finden
+    var videoContainer = document.getElementById('videoContainer-{{ section.id }}');
+    var iframe = document.getElementById('youtubeVideo-{{ section.id }}');
+    
+    if (iframe && videoContainer) {
+      // Klick-Event für den Container (für Touch-Geräte)
+      videoContainer.addEventListener('click', function() {
+        this.classList.add('playing');
+      });
+      
+      // YouTube Player API verwenden, wenn verfügbar
+      window.onYouTubeIframeAPIReady = function() {
+        new YT.Player('youtubeVideo-{{ section.id }}', {
+          events: {
+            'onStateChange': function(event) {
+              if (event.data === YT.PlayerState.PLAYING || 
+                  event.data === YT.PlayerState.PAUSED) {
+                videoContainer.classList.add('playing');
+              }
+            }
+          }
+        });
+      };
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Music V2 (Alternative)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Untertitel",
+      "default": "LOFI MIX VOL. 01"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "CHILL"
+    },
+    {
+      "type": "richtext",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "<p>Proudly presenting out very first release: Chill | Lofi Mix Vol. 01</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Beschreibung",
+      "default": "<p>Mellow lofi vibes with a spherical touch. Influence in both chilled hip hop with minimal electronic elements.</p>"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "YouTube Video URL",
+      "info": "Füge eine YouTube URL ein"
+    },
+    {
+      "type": "text",
+      "id": "video_title",
+      "label": "Video Titel (für Barrierefreiheit)",
+      "default": "Lofi Mix Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "label": "Layout umkehren (Video rechts, Text links)",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button-Einstellungen"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button 1 Text",
+      "default": "Watch on YouTube"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_style_secondary",
+      "label": "Button 1 im sekundären Stil anzeigen",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_style_secondary_2",
+      "label": "Button 2 im sekundären Stil anzeigen",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Abstandseinstellungen"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand oben",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand unten",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Music V2 (Alternative)",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}
